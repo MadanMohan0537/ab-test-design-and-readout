@@ -1,0 +1,8 @@
+[
+  {"name": "mature valid win ships", "expected": "ship"},
+  {"name": "early readout continues", "expected": "continue", "overrides": {"observation.primary.control.visitors": 10000, "observation.primary.control.conversions": 810, "observation.primary.treatment.visitors": 10000, "observation.primary.treatment.conversions": 880, "observation.days_running": 4}},
+  {"name": "sample-ratio mismatch investigates", "expected": "investigate", "overrides": {"observation.primary.control.visitors": 120000, "observation.primary.treatment.visitors": 80000, "observation.primary.control.conversions": 9720, "observation.primary.treatment.conversions": 7040}},
+  {"name": "unplanned peeking investigates", "expected": "investigate", "overrides": {"observation.decision_looks": 3}},
+  {"name": "guardrail breach rejects", "expected": "reject", "overrides": {"observation.guardrails.0.treatment.conversions": 900}},
+  {"name": "completed inconclusive test iterates", "expected": "iterate", "overrides": {"observation.primary.treatment.conversions": 8150}}
+]

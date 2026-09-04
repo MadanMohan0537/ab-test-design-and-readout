@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/experiment-design.schema.json",
+  "title": "Experiment design",
+  "type": "object",
+  "required": ["hypothesis", "control", "treatment", "primary_metric", "baseline_rate", "expected_relative_lift"],
+  "properties": {
+    "hypothesis": {"type": "string", "minLength": 1},
+    "control": {"type": "string", "minLength": 1},
+    "treatment": {"type": "string", "minLength": 1},
+    "primary_metric": {"$ref": "#/$defs/metric"},
+    "secondary_metrics": {"type": "array", "items": {"$ref": "#/$defs/metric"}},
+    "guardrail_metrics": {"type": "array", "items": {"$ref": "#/$defs/metric"}},
+    "baseline_rate": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+    "expected_relative_lift": {"type": "number", "exclusiveMinimum": 0},
+    "alpha": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+    "power": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+    "allocation": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+    "daily_eligible_users": {"type": "integer", "minimum": 1},
+    "minimum_days": {"type": "integer", "minimum": 1},
+    "planned_looks": {"const": 1},
+    "randomization_unit": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "direction": {"enum": ["increase", "decrease"]},
+        "minimum_detectable_effect": {"type": "number", "exclusiveMinimum": 0},
+        "kind": {"const": "binary"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

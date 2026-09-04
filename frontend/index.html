@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Design and interpret trustworthy product experiments with deterministic statistics.">
+  <title>AI Experimentation Copilot</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <header><a class="brand" href="/"><span>EX</span> Experimentation Copilot</a><div class="status"><i></i> Deterministic statistics</div></header>
+  <main>
+    <section class="hero"><p class="eyebrow">EXPERIMENT DESIGN · VALIDITY · DECISION</p><h1>Run experiments that answer<br><em>the question you actually asked.</em></h1><p>Plan sample size and duration, validate the design, detect broken randomization, analyze outcomes and guardrails, and apply a predeclared recommendation policy.</p></section>
+    <nav class="tabs" aria-label="Workflow"><button class="tab active" data-tab="design">1 · Design</button><button class="tab" data-tab="analyze">2 · Analyze</button></nav>
+    <section id="designPanel" class="workspace">
+      <aside class="panel editor"><div class="panel-head"><div><p class="eyebrow">HYPOTHESIS</p><h2>Experiment brief</h2></div></div><label>Hypothesis<textarea id="hypothesis">Showing social proof on the pricing page will increase paid conversion.</textarea></label><div class="two"><label>Baseline rate<input id="baseline" type="number" value="0.08" step="0.001"></label><label>Expected lift<input id="lift" type="number" value="0.05" step="0.01"></label></div><div class="two"><label>Daily users<input id="traffic" type="number" value="12000"></label><label>Minimum days<input id="minDays" type="number" value="14"></label></div><label>Primary metric<input id="metric" value="Subscription conversion"></label><label>Guardrail metric<input id="guardrail" value="Support ticket rate"></label><button id="createDesign">Generate design</button><p id="designError" class="error"></p></aside>
+      <section class="output"><div class="metrics"><article><span>Sample per arm</span><strong id="perArm">—</strong><small>users</small></article><article><span>Total sample</span><strong id="totalSample">—</strong><small>eligible users</small></article><article><span>Minimum duration</span><strong id="duration">—</strong><small>days</small></article><article><span>Launch status</span><strong id="launch">—</strong><small>preflight</small></article></div><article class="panel details"><div class="panel-head"><div><p class="eyebrow">EXPERIMENT CONTRACT</p><h2>Predeclared design</h2></div><span>fixed horizon</span></div><div id="designDetails" class="empty">Generate the design to see the experiment contract.</div></article></section>
+    </section>
+    <section id="analyzePanel" class="workspace hidden">
+      <aside class="panel editor"><div class="panel-head"><div><p class="eyebrow">READOUT</p><h2>Observed counts</h2></div></div><div class="two"><label>Control visitors<input id="controlN" type="number" value="100000"></label><label>Control conversions<input id="controlX" type="number" value="8100"></label></div><div class="two"><label>Variant visitors<input id="variantN" type="number" value="100000"></label><label>Variant conversions<input id="variantX" type="number" value="8800"></label></div><div class="two"><label>Days running<input id="daysRunning" type="number" value="14"></label><label>Decision looks<input id="looks" type="number" value="1"></label></div><button id="runAnalysis">Analyze result</button><p id="analysisError" class="error"></p></aside>
+      <section class="output"><div class="metrics"><article><span>Control</span><strong id="controlRate">—</strong><small>conversion</small></article><article><span>Variant</span><strong id="variantRate">—</strong><small>conversion</small></article><article><span>Relative lift</span><strong id="relativeLift">—</strong><small id="pValue">p=—</small></article><article><span>Recommendation</span><strong id="recommendation">—</strong><small>policy output</small></article></div><article class="panel details"><div class="panel-head"><div><p class="eyebrow">INTERPRETATION</p><h2 id="headline">Experiment result</h2></div><span id="confidence"></span></div><p id="effect"></p><div id="checks" class="checks"></div><div class="recommend"><b id="decision"></b><span id="reason"></span></div><p id="caveat" class="caveat"></p></article></section>
+    </section>
+  </main>
+  <footer>Statistics are deterministic · Interpretation is evidence-bound · Decisions remain human-owned</footer>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>

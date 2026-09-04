@@ -1,0 +1,7 @@
+services:
+  copilot:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      API_TOKEN: ${API_TOKEN:-}

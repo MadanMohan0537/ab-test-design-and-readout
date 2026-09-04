@@ -1,0 +1,19 @@
+{
+  "design": {
+    "hypothesis": "Showing social proof on the pricing page will increase paid conversion.",
+    "control": "Existing pricing page",
+    "treatment": "Pricing page with customer logos and testimonial",
+    "primary_metric": { "name": "Subscription conversion", "direction": "increase", "minimum_detectable_effect": 0.05 },
+    "secondary_metrics": [{ "name": "Pricing CTA click-through", "direction": "increase" }],
+    "guardrail_metrics": [{ "name": "Support ticket rate", "direction": "decrease" }],
+    "baseline_rate": 0.08,
+    "expected_relative_lift": 0.05,
+    "alpha": 0.05,
+    "power": 0.8,
+    "allocation": 0.5,
+    "daily_eligible_users": 12000,
+    "minimum_days": 14,
+    "planned_looks": 1,
+    "randomization_unit": "user"
+  }
+}

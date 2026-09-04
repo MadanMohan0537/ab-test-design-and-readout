@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experiment observation",
+  "type": "object",
+  "required": ["experiment_id", "primary", "days_running"],
+  "properties": {
+    "experiment_id": {"type": "string", "minLength": 1},
+    "primary": {"$ref": "#/$defs/result"},
+    "guardrails": {"type": "array", "items": {"$ref": "#/$defs/result"}},
+    "segments": {"type": "object", "additionalProperties": {"type": "array", "items": {"$ref": "#/$defs/result"}}},
+    "days_running": {"type": "integer", "minimum": 0},
+    "decision_looks": {"type": "integer", "minimum": 1},
+    "daily_primary": {"type": "array", "items": {"type": "object"}}
+  },
+  "$defs": {
+    "arm": {"type": "object", "required": ["visitors", "conversions"], "properties": {"visitors": {"type": "integer", "minimum": 1}, "conversions": {"type": "integer", "minimum": 0}}, "additionalProperties": false},
+    "result": {"type": "object", "required": ["name", "control", "treatment"], "properties": {"name": {"type": "string", "minLength": 1}, "direction": {"enum": ["increase", "decrease"]}, "guardrail_threshold": {"type": "number", "minimum": 0}, "control": {"$ref": "#/$defs/arm"}, "treatment": {"$ref": "#/$defs/arm"}}, "additionalProperties": false}
+  },
+  "additionalProperties": false
+}
