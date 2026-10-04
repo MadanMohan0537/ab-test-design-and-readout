@@ -6,6 +6,14 @@ The Copilot turns a product hypothesis into a launch-ready experiment contract, 
 
 > **Status:** working portfolio MVP for two-arm, fixed-horizon experiments with binary outcomes. It runs locally without a paid API, database, or cloud account.
 
+## A useful first evaluation
+
+Design a two-arm binary-outcome experiment, record its sample and duration requirements, then analyze an included example. Inspect validity checks and guardrails before reading the final recommendation.
+
+The current statistics apply to the fixed-horizon design described below. Do not apply the same thresholds to repeated peeking, clustered assignment, multi-arm experiments or continuous metrics without extending and validating the method.
+
+Start with [API orchestration](backend/app/main.py), [example inputs](examples/) and [schema](schema/) when integrating another frontend. Retain the experiment contract and observed counts together so a recommendation can be reproduced.
+
 ## Why this is more than an A/B calculator
 
 Most calculators start at conversions and visitors. This project starts before launch and protects the decision after launch.
